@@ -6,10 +6,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "./src/test/resources/features", //feature folder path
+        plugin = {
+                "pretty",//raporlarin daha ikunakli olmasi icin
+                "html:target/default-cucumber-reports.html",
+                "json:target/json-reports/cucumber.json",
+                "junit:target/xml-report/cucumber.xml"
+        },
+        monochrome = true,//raporlarin consoleda okunakli sekilde cikmasi icin
+        features = "./src/test/resources/features",//features folder path
         glue = "stepdefinitions",// stepdefinition PATH
-        tags= "@tesla or @iphone",
-        dryRun = true
+        tags= "@data_tables",
+        dryRun = false
 )
 public class Runner {
     //Test case will be run
